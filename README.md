@@ -1,2 +1,2 @@
-# 3dapp
-Web 3D Applications
+# Web 3D Applications
+Labs and Assignment
