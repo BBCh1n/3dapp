@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Coca Cola 3D App template</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Font awesome fonts, both css and js versions installed, js SVG versions will override if they are available -->
+    <!-- Font Awesome Webfonts -->
+    <link rel="stylesheet" href="css/all.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+    
+    <!-- Link in some fonts — Not used because we finally installed the fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet" type="text/css"> -->
+
+    <!-- X3D -->
+    <link rel='stylesheet' type='text/css' href='css/x3dom.css'></link>
+  </head>
+
+  <body>
+    <!-- Logo and navigation bar -->
+    <nav class="navbar sticky-top navbar-expand-sm navbar_coca_cola">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <div class="logo">
+          <a class="navbar-brand" href="#">
+            <h1>1</h1>
+            <h1>oca</h1>
+            <h2>Cola</h2>
+            <h3>Journey</h3>
+            <p>Refreshing the world, one story at a time</p>
+          </a>
+        </div>
+          
+        <!-- Collapsible Navbar Menu Icon-->
+        <!-- Three bar icon that appears when page is shrunk, collapses the navigation links, not data target is the id selector #navbarSupportedContent -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Link Menu item button to the links class navbar-collapse selector -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Links -->
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            
+            <!-- Dropdown for the Coca Cola Drinks Menu -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">
+                Drinks
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="coke.html">Coca Cola</a>
+                <a class="dropdown-item" href="sprite.html">Sprite</a>
+                <a class="dropdown-item" href="pepper.html">Dr Pepper</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- This is the main contents of the page, it has a background image across 1 column, followed by three columns holding cards in a row for the 3 images and associated texts -->
+    <div class="container-fluid main_contents">
+      <div class="row"> <!-- Main_3D Image or Carousel -->
+        <div class="col-sm-12">
+          <div id="main_3d_image">
+            <x3d id=”model3D”>
+              <scene>
+              <inline url="lab4\assets\models\coke.x3d"> </inline> 
+              </scene>
+            </x3d>
+          </div>
+        </div>
+      </div>
+    
+    <!-- Your 3D App footer -->
+    <nav class="navbar navbar-expand-sm footer">
+      <div class="container-fluid">
+        <div class="navbar-text float-left copyright">
+          <p><span class="align-baseline">&copy Mobile Web 3D Applications</span></p>
+        </div>
+
+        <div class="footerInfo">
+          <ul>
+            <li class="navbar-text">
+              <p>2024 Season<br></p>
+            </li>
+            <li class="navbar-text">
+              <p>Chin - University of Sussex<br></p>
+            </li>
+            <li class="navbar-text">
+              <p><b>Created with Bootstrap 5.3.2 </b></p>
+            </li>
+          </ul>
+        </Div>
+
+        <div class="navbar-text float-right social">
+          <a href="#"><i class="fab fa-github-square fa-2x fa-pull-right"></i></a>
+          <a href="#"><i class="fab fa-google-plus-square fa-2x fa-pull-right"></i></a>
+          <a href="#"><i class="fab fa-twitter-square fa-2x fa-pull-right"></i></a>
+          <a href="#"><i class="fab fa-facebook-square fa-2x fa-pull-right"></i></a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <!-- Font Awesome Version 6 -->
+    <!-- Font Awesome SVG - Note if you use custom.css to change color or other features, all.js will overwrite.-->
+    <!-- <script src="js/all.js"></script> -->
+    <!-- <script src="https://kit.fontawesome.com/5fba606341.js" crossorigin="anonymous"></script> -->
+  </body>
+</html>
