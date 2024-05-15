@@ -434,8 +434,8 @@
                 <div class="modal-body">
 
                     <p> <a href="https://users.sussex.ac.uk/~martinwh/3dapp/labs/">Live Feedback Site of Web 3D Applications</a></p>
-                    <p> <a href="https://github.com/martinwh/3D_Apps_2020/">GitHub Repository of 3D_Apps_2020</a></p>
-                    <p><a href="https://www.coca-cola.com/gb/en/">Coca Cola Greate Britain</a></p>
+                    <p> <a href="https://github.com/martinwh/3D_Apps_2020">GitHub Repository of 3D_Apps_2020</a></p>
+                    <p><a href="https://www.coca-cola.com/gb/en">Coca Cola Greate Britain</a></p>
                 </div>
 
                 <!-- Modal footer -->
@@ -478,24 +478,24 @@
     let light_headLight, light_omniLight, light_targetLight;
 
     function init() {
-        // 设置死尺寸
+        // Setting the fixed size
         const width = document.body.clientWidth * 0.6;
         const height = document.body.clientHeight * 0.4;
 
-        // 创建场景
+        // Creating a Scene
         scene = new THREE.Scene();
         scene.background = null;
 
-        // 创建相机
+        // Creating a Camera
         camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-        camera.position.z = 10; // 调整相机位置，使其更远
+        camera.position.z = 10; // Adjust the camera position to make it farther away
 
-        // 创建渲染器
+        // Creating a Renderer
         renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(width, height);
         document.getElementById('threejs-container').appendChild(renderer.domElement);
 
-        // 创建光源
+        // Creating a Light Source
         light_headLight = new THREE.SpotLight(0xffffff, 5);
         light_headLight.position.set(0, 10, 10);
         scene.add(light_headLight);
@@ -512,54 +512,54 @@
         const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
         scene.add(hemisphereLight);
 
-        // 创建加载器
+        // Creating a loader
         loader = new THREE.GLTFLoader();
 
-        // 创建 OrbitControls
+        // Creating OrbitControls
         controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true; // 启用阻尼效果
+        controls.enableDamping = true; // Enable damping effect
         controls.dampingFactor = 0.25;
         controls.screenSpacePanning = false;
         controls.minDistance = 2;
         controls.maxDistance = 50;
         controls.maxPolarAngle = Math.PI / 2;
 
-        animate(); // 确保 animate 在 init 之后立即调用
+        animate(); // Make sure animate is called immediately after init
     }
 
     function loadModel(url) {
         loader.load(url, function (gltf) {
             model = gltf.scene;
 
-            // 计算模型的包围盒
+            // Wraparound boxes for computational models
             const box = new THREE.Box3().setFromObject(model);
 
-            // 获取包围盒的中心点
+            // Get the centre of the enclosing box
             const center = box.getCenter(new THREE.Vector3());
 
-            // 获取包围盒的大小
+            // Get the size of the enclosing box
             const size = box.getSize(new THREE.Vector3());
 
-            // 将模型的位置减去中心点的位置，使模型居中
+            // Centre the model by subtracting its position from the position of the centre point
             model.position.sub(center);
 
-            // 计算最大轴长
+            // Calculate maximum shaft length
             const maxAxis = Math.max(size.x, size.y, size.z);
 
-            // 统一缩放模型，使其符合预期比例
-            const scaleFactor = 10 / maxAxis; // 缩放模型，使其更合适
+            // Uniform scaling of models to desired proportions
+            const scaleFactor = 10 / maxAxis; // Scale the model to fit better
             model.scale.multiplyScalar(scaleFactor);
 
-            // 再次计算包围盒和中心点
+            // Calculate the enclosing box and centre point again
             const newBox = new THREE.Box3().setFromObject(model);
             const newCenter = newBox.getCenter(new THREE.Vector3());
 
-            // 再次调整模型的位置，以确保缩放后仍然居中
+            // Adjust the position of the model again to ensure that it is still centred after scaling
             model.position.sub(newCenter);
 
             scene.add(model);
 
-            // 渲染场景
+            // Render the scene
             renderer.render(scene, camera);
         }, undefined, function (error) {
             console.error(error);
@@ -569,24 +569,24 @@
     function animate() {
         requestAnimationFrame(animate);
 
-        // 如果模型存在且动画功能已启用，则执行旋转动画
+        // If the model exists and the animation function is enabled, the rotation animation is executed
         if (model && enableRotation) {
             model.rotation[rotationAxis] += rotationSpeed;
         }
 
-        // 更新控制器
+        // Update the controller
         controls.update();
 
         renderer.render(scene, camera);
     }
 
-    // 等待DOM加载完成后再初始化Three.js
+    // waiting for the DOM to finish loading before initialising Three.js
     window.onload = function() {
         init();
-        loadModel('../application/assets/glb/cola.glb'); // 确保模型在初始化后加载
+        loadModel('../application/assets/glb/cola.glb'); // Ensure models are loaded after initialisation
     };
 
-    // 切换模型功能
+    // Switching Model Functions
     function cokeScene() {
         $("#x3dModelTitle_coke").show();
         $("#x3dModelTitle_sprite").hide();
@@ -620,38 +620,38 @@
         loadModel('../application/assets/glb/drpepper.glb');
     }
 
-    // 其他功能函数
+    // Other Function Functions
     let enableRotation = false;
     let rotationAxis = 'y';
     let rotationSpeed = 0.01;
 
     function cameraFront() {
-        camera.position.set(0, 0, 10); // 调整相机位置，使其更远
+        camera.position.set(0, 0, 10); // Adjust the camera position to make it farther away
         camera.lookAt(0, 0, 0);
     }
 
     function cameraBack() {
-        camera.position.set(0, 0, -10); // 调整相机位置，使其更远
+        camera.position.set(0, 0, -10); // Adjust the camera position to make it farther away
         camera.lookAt(0, 0, 0);
     }
 
     function cameraLeft() {
-        camera.position.set(-10, 0, 0); // 调整相机位置，使其更远
+        camera.position.set(-10, 0, 0); // Adjust the camera position to make it farther away
         camera.lookAt(0, 0, 0);
     }
 
     function cameraRight() {
-        camera.position.set(10, 0, 0); // 调整相机位置，使其更远
+        camera.position.set(10, 0, 0); // Adjust the camera position to make it farther away
         camera.lookAt(0, 0, 0);
     }
 
     function cameraTop() {
-        camera.position.set(0, 10, 0); // 调整相机位置，使其更远
+        camera.position.set(0, 10, 0); // Adjust the camera position to make it farther away
         camera.lookAt(0, 0, 0);
     }
 
     function cameraBottom() {
-        camera.position.set(0, -10, 0); // 调整相机位置，使其更远
+        camera.position.set(0, -10, 0); // Adjust the camera position to make it farther away
         camera.lookAt(0, 0, 0);
     }
 

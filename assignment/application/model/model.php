@@ -7,7 +7,7 @@ class Model {
 	public function __construct()
 	{
 		// Set up the database source name (DSN)
-		$dsn = 'sqlite:.\db\test1.db';
+		$dsn = 'sqlite:./db/test1.db';
 		
 		// Then create a connection to a database with the PDO() function
 		try {	
